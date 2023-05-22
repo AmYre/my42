@@ -69,6 +69,6 @@ char	**ft_split(const char *s, char c)
 			val[2]++;
 		}
 	}
-	str[val[2]] = '\0';
+	str[val[2]] = 0;
 	return (str);
 }
