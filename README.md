@@ -1,26 +1,31 @@
 # my42
 
-My42 is the gathering of my cursus projects
+My collection of projects from the 42 curriculum
 
 For now on you will find :
  - The Libft project
+ - ...
+ - ...
+ - ...
+ - ...
 
 
 
 ## OpenSource
 
-This represents, time, tears and blood. But feel free to use it as I used other repos to help me in this enlighting journey. 
-In 42, many thinks about reading other repos as cheating. I can not desagree more.
-Tools in our cultural society is all about how we use them. The famous example of the knife...
+This represents blood, sweat and tears. But feel free to use it, just as I used other repos to help me in this enlighting journey. 
+At 42, many think of reading other repos as cheating. I couldn't desagree more.
+Tools in our cultural society is all about how we use them.
 
-Yeah if you never wrote a line of code and just speedrunning your 42 by copy pasting from github, that is definitevly wrong.
-But why being so pessimistic about human behavior, about us. How about having faith in smartness, and bet in good judgment.
+Yeah if you have never wrote a line of code and rushing through your projects by copy/pasting from github, that is definitevly wrong.
+But why are we being so pessimistic about human behavior, about us. How about having faith in intelligence and sound judgment.
 
-Being able to compare code, see other way to think, is a big part of learning. The best one.
+Being able to compare code, to see another way of thinking, is a big part of learning. The best one.
 Code by yourself, definitely. But do not code alone.
 
 Remember The Collective from Star Trek ?
 <p align="center">
   <img src="https://www.hollywoodreporter.com/wp-content/uploads/2015/06/startrek_main.jpg" width="60%" />
 </p>
+
 > Picard, ou l'Intelligence Collective.
