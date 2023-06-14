@@ -19,6 +19,6 @@ Code by yourself, definitely. But do not code alone.
 
 Remember The Collective from Star Trek ?
 <p align="center">
-  <img src="https://i.imgur.com/oFAc9EQ.png](https://www.hollywoodreporter.com/wp-content/uploads/2015/06/startrek_main.jpg" width="60%" />
+  <img src="https://www.hollywoodreporter.com/wp-content/uploads/2015/06/startrek_main.jpg" width="60%" />
 </p>
 > Picard, ou l'Intelligence Collective.
