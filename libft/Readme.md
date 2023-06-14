@@ -23,7 +23,7 @@ That is the moment you start learning again. How to make a smart memory allocati
 - Chained list if you do the Bonuses
   
 
-- ## Do the bonuses worth it ?
+## Do the bonuses worth it ?
 Doing the bonuses was very fun. The best part of this project. 
 I do not hide that creating repetitive functions by interprating an (imo) arbitrary man again and again was not very fulfilling.
 The bonuses came as refreshing as it can gets after a looong and boring ft_tunnel.
