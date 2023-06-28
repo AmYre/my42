@@ -6,7 +6,7 @@
 #    By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/22 23:05:25 by amben-ha          #+#    #+#              #
-#    Updated: 2023/06/20 03:07:11 by amben-ha         ###   ########.fr        #
+#    Updated: 2023/06/26 21:18:48 by amben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,6 @@ $(NAME): $(OBJS)
 
 bonus: ${OBJS_BONUS} ft_printf.h
 	ar rcs ${NAME} ${OBJS_BONUS}
-
-test : fclean all
-	$(CC) main.c -L. -lftprintf -lbsd -o a.out\
 
 clean:
 	rm -f ${OBJS}
