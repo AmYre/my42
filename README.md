@@ -5,9 +5,8 @@ My collection of projects from the 42 curriculum
 For now on you will find :
  - Libft
  - Printf
- - ...
- - ...
- - ...
+ - B2bRoot
+ - GetNextLine
 
 
 
