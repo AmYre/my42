@@ -23,10 +23,10 @@ Creating the ftp connection from my local machine to the VM to manage the file u
 
 ## The Ressources used
 
-# For the installation part
+### For the installation part
 
 -   [Hanshazairi Youtube](https://www.youtube.com/watch?v=2w-2MX5QrQw)
 
-# For the rest / the bonuses / the training eval
+### For the rest / the bonuses / the training eval
 
 -   [Gemartin Github](https://github.com/gemartin99/Born2beroot-Tutorial/blob/main/README_EN.md) - Big shoutout to this guy. He understood the way a good guide is done. Not just the brainless lists of commands, but a lot of verbose explanations about context and why and how the commands are here for.
