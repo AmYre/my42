@@ -1,6 +1,6 @@
 # GetNextLine
 
-This project is about learning to handle how to read files properly on a system.
+This project is about learning how to read files properly on a system.
 You will have to read content from a file descriptor and returning it line by line.
 
 
@@ -23,4 +23,4 @@ But either way, it was very satisfynig to really use linked list, as we just had
 
 ### For a version with one linked list and norm ready
 
--   [Nikito Y](https://www.youtube.com/watch?v=xgDSXNOHTIA) - I feel very lucky to have this guy one year ahead, with his very well produced youtube videos and normal stud tone. Just casualy sharing his stud experience.
+-   [Nikito Youtube again](https://www.youtube.com/watch?v=xgDSXNOHTIA) - I feel very lucky to have this guy one year ahead, with his very well produced youtube videos and normal stud tone. Just casualy sharing his stud experience.
