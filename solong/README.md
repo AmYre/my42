@@ -20,7 +20,7 @@ Polishing (handling all cases of possible leaks) was hard but worth it.
 
 ## The Ressources used
 
-There is no official documentation outside of the vey short vids of the intra, thank god there some dedicated students at 42 who appreciate transmission and sharing
+There is no official documentation outside of the very short vids of the intra, thank god there some dedicated students at 42 who appreciate transmission and sharing
 -   [Aurelien's Blog](https://aurelienbrabant.fr/blog)
 -   [Harm-Smits Documentation](https://harm-smits.github.io/42docs/libs/minilibx.html)
 -   [qst0 Git repo](https://qst0.github.io/ft_libgfx/man_mlx.html)
