@@ -2,9 +2,9 @@
 
 This project is about coding a little game in order to handle graphics in C (miniLibX).
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AmYre/my42/master/solong/assets/Screenshot%20from%202023-09-20%2018-12-04.png
-" width="60%" />
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/solong/assets/Screenshot%20from%202023-09-20%2018-12-04.png" width="60%" />
 </p>
+
 ## How was it?
 
 Finally a very motivating project. Making your own game is very symbolic, if like me you are used to be the player 
