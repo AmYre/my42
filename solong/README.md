@@ -1,7 +1,9 @@
 # SoLong
 
 This project is about coding a little game in order to handle graphics in C (miniLibX).
-
+<p align="center">
+  <img src="https://www.hollywoodreporter.com/wp-content/uploads/2015/06/startrek_main.jpg" width="60%" />
+</p>
 
 ## How was it?
 
