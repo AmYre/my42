@@ -7,6 +7,8 @@ For now on you will find :
  - Printf
  - B2bRoot
  - GetNextLine
+ - SoLong
+ - PushSwap
 
 
 
