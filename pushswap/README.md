@@ -19,7 +19,7 @@ Thats it. No new skills learned on this one, but making stronger the use of link
 
 ## The Ressources used
 
-A lot of students fall on the pit of sorting algorithm because the subject imply it. Not having full score because they stood by Radix, Insert, blabla sort. But it is really not about that. Wth this two ressources
+A lot of students fall on the pit of sorting algorithm because the subject imply it. Not having full score because they stood by Radix, Insert, blabla sort. But it is really not about that. With this two simple and straightforward ressources
 you can clearly understand that is all about defining a target and the cheapest number of action to get to it :
 -   [Medium - A journey to find most efficient sorting algorithm](https://medium.com/@ayogun/push-swap-c1f5d2d41e97)
 -   [Oceano the GOAT](https://www.youtube.com/watch?v=OaG81sDEpVk) join him on Discord => https://t.co/iW2AxnNxNS
