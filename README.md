@@ -9,6 +9,7 @@ For now on you will find :
  - GetNextLine
  - SoLong
  - PushSwap
+ - Pipex
 
 
 
