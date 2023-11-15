@@ -3,7 +3,7 @@
 This project is about being able to reproduce the pipe command.
 
 <p align="center">
-  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deviantart.com%2Fmomitty%2Fart%2FWelcome-to-Warp-Zone-20235236&psig=AOvVaw0w49cNuswK7kvfhwGbi2eX&ust=1700161048569000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCPDHns3XxoIDFQAAAAAdAAAAABAT" width="100%"/>
+  <img src="https://i.ytimg.com/vi/edsLBz0_DUc/maxresdefault.jpg" width="100%"/>
 </p>
 
 ## How was it?
