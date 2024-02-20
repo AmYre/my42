@@ -10,6 +10,7 @@ For now on you will find :
  - SoLong
  - PushSwap
  - Pipex
+ - MiniShell
 
 
 
