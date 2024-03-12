@@ -9,7 +9,8 @@ This project is about eating with two forks (i.e. using Threads and Mutexes).
 
 It feels nice to do a 'regular' project after minishell. Here we complete our knowledge on concurrentiel computing.
 We learned about forks and pipes in the pipex projects. Here we see the difference with threads that can share data directly together.
-This sharing of ressources is a benefit but a dangerous thing when thousands of threads read an write the same variable at the same time.you have to be taking care of by protecting acces
+This sharing of ressources is a benefit but a dangerous thing when thousands of threads read an write the same variable at the same time.
+You will have to take care of this issue by managing access to those shared variables.
 
 
 ## The Ressources used and tips
