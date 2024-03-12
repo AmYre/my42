@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 00:25:25 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/03/12 00:43:27 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/03/12 02:57:19 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	is_thinking(t_philo *philo)
 {
 	print_status(philo, "🥸", "is thinking");
-	// usleep((philo->data->time_to_die
-	// 		- (philo->data->time_to_eat
-	// 			+ philo->data->time_to_sleep + 10)) * 1000);
+	sleep_and_check((philo->data->time_to_die
+			- (philo->data->time_to_eat
+				+ philo->data->time_to_sleep + 10) * 1000), philo);
 	return (1);
 }
 
