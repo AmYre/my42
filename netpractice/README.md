@@ -2,7 +2,7 @@
 
 This project is about connecting people (i.e. Network and Subnetting). Sponsored by Nokia_3310
 <p align="center">
-  <img src="(https://raw.githubusercontent.com/AmYre/my42/master/netpractice/giphy.gif)" width="100%"/>
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/netpractice/giphy.gif" width="100%"/>
 </p>
 
 ## How was it?
