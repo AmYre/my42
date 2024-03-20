@@ -7,9 +7,9 @@ This project is about connecting people (i.e. Network and Subnetting). Sponsored
 
 ## How was it?
 
-I always feared network infra, sysadmin stuff. It feels like it is to low level for me, unreachable.
-But this project proved once again, that Knowledge is Fear's greatest enemy. I loved this project !
-It was very didactic. I was playing found the subnet game all along 😁.
+I always feared network infra, sysadmin stuff. It feels like it is to low level for me, unreachable.<br/>
+But this project proved once again, that Knowledge is Fear's greatest enemy. I loved this project !<br/>
+It was very didactic. I was playing found the subnet game all along 😁.<br/>
 Plus, it was a good pretext to see all about OSI layer model, the different protocols, and globally how internet magic works behind the scene.
 
 The evaluation in the other hand can be quite stressfull. You only have 15 minutes to achieve live 3 subnetting exercices.
