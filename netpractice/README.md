@@ -48,8 +48,8 @@ With this technique the apparent mystical shenanigans of Netpractice becomes cry
 ## The Ressources used<br/>
 <br/>
 To grasp all the kmowledge around Subnetting, like Binary conversion, CIDR table etc.. i found an amazing playlist<br/>
-that talks about network with refreshing pov. The ressources in this filed are so dusty. People so not fun... This playlist is quite unique :
--   [Youtube - You Suck at Subnetting](https://www.youtube.com/watch?v=5WfiTHiU4x8&list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF)
-
-I learned the magic recipe in here :
--   [Youtube - Magic Number](https://www.youtube.com/watch?v=XMzLpGKTu50&t=851s)
+that talks about network with refreshing pov. The ressources in this filed are so dusty. People so not fun... This playlist is quite unique :<br/>
+-   [Youtube - You Suck at Subnetting](https://www.youtube.com/watch?v=5WfiTHiU4x8&list=PLIhvC56v63IKrRHh3gvZZBAGvsvOhwrRF)<br/>
+<br/>
+I learned the magic recipe in here :<br/>
+-   [Youtube - Magic Number](https://www.youtube.com/watch?v=XMzLpGKTu50&t=851s)<br/>
