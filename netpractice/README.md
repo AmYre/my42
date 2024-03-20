@@ -46,7 +46,8 @@ Usable range addresses = 124.145.128.1 --- 124.145.191.255<br/>
 With this technique the apparent mystical shenanigans of Netpractice becomes crystal clear. You see everything.<br/>
 <br/>
 <br/>
-## The Ressources used<br/>
+
+## The Ressources used
 <br/>
 To grasp all the kmowledge around Subnetting, like Binary conversion, CIDR table etc.. i found an amazing playlist<br/>
 that talks about network with refreshing pov. The ressources in this filed are so dusty. People so not fun... This playlist is quite unique :<br/>
