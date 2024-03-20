@@ -27,7 +27,8 @@ Usable range addresses = 124.145.110.1 --- 124.145.110.127<br/>
 <br/>
 <br/>
 <br/>
-## Another example to do Subnetting with the Magic Number<br/>
+
+## Another example to do Subnetting with the Magic Number
 <br/>
 You open your subnetting exercice and it gives you this :<br/>
 IP address : 153.63.181.254<br/>
