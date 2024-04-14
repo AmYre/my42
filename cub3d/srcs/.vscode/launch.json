@@ -1,0 +1,24 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/sgoinfre/goinfre/Perso/acloos/goinfre/Perso/acloos/intra-uuid-6a77bcd9-735e-44b9-a1b4-65437bd43323-4840631-ryounssi/minishell/srcs",
+      "program": "/sgoinfre/goinfre/Perso/acloos/goinfre/Perso/acloos/intra-uuid-6a77bcd9-735e-44b9-a1b4-65437bd43323-4840631-ryounssi/minishell/srcs/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
+}
