@@ -2,7 +2,7 @@
 
 This project is about Raycasting
 <p align="center">
-  <img src="https://raw.githubusercontent.com/AmYre/my42/master/wolf.jpg" width="60%"/>
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/wolf.jpg" width="100%"/>
 </p>
 
 ## How was it?
