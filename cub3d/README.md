@@ -19,13 +19,14 @@ Never been interested, i am here to learn.<br/>
 But a starting point ? Yes please. Raycasting, raycasting, raycasting, okay but then what project wise?<br/>
 I usually find my own way to progress quite easily. But on this one I didn't.<br/>
 <br/>
-This is our second graphical project. For so_long for example, i found my way to start.<br/>
-	- I initialised the MLX first
-	- added assets
-	- then parsed my map
-	- make correspond the assets with the map
-	- listening to the keyboard
-	- move accordingly
+This is our second graphical project. For so_long for example, i found my way to start :
+ - I initialised the MLX first
+ - added assets
+ - then parsed my map
+ - make correspond the assets with the map
+ - listening to the keyboard
+ - move accordingly
+ <br/>
 See what i did here ? Very natural way to progress in the project. So when i was asking around, that was the kind of feedback i was expecting.<br/>
 But the only answer i had were : "did you read LODEV raycasting ?".<br/>
 <br/>
