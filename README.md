@@ -3,20 +3,26 @@
 My collection of projects from the 42 curriculum
 
 For now on you will find :
- - Libft
- - Printf
- - B2bRoot
- - GetNextLine
- - SoLong
- - PushSwap
- - Pipex
- - MiniShell
 
-
+-   Libft
+-   Printf
+-   B2bRoot
+-   GetNextLine
+-   SoLong
+-   PushSwap
+-   Pipex
+-   MiniShell
+-   Philosophers
+-   NetPractice
+-   Cub3d
+-   CPP Modules
+-   Inception
+-   WebServ
+-   Transcendence
 
 ## OpenSource
 
-This represents blood, sweat and tears. But feel free to use it, just as I used other repos to help me in this enlighting journey. 
+This represents blood, sweat and tears. But feel free to use it, just as I used other repos to help me in this enlighting journey.
 At 42, many think of reading other repos as cheating. I couldn't desagree more.
 Tools in our cultural society is all about how we use them.
 
@@ -27,6 +33,7 @@ Being able to compare code, to see another way of thinking, is a big part of lea
 Code by yourself, definitely. But do not code alone.
 
 Remember The Collective from Star Trek ?
+
 <p align="center">
   <img src="https://www.hollywoodreporter.com/wp-content/uploads/2015/06/startrek_main.jpg" width="60%" />
 </p>
