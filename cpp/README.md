@@ -32,8 +32,9 @@ I will not do a list of everything but, to sum up, they are so bad that you will
 The other studs I had the opportunity to chat about this, agree on the fact that you want the evaluation sheet before showing up to the real evaluation to anticipate those last minute appearances.<br/>
 That is how bad it is. When bypassing the system becomes the system, you know something went wrong.<br/>
 
-## the resources used
+## The resources used
 
 -   The C PlusPlus documentation (https://cplusplus.com)<br/>
 -   [Youtube - Code Beauty](https://www.youtube.com/watch?v=_NlRcT5gWpo&list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0) for a generic approach of C++.<br/>
--   [Youtube - OneLoneCoder](https://www.youtube.com/watch?v=6OoSgY6NVVk) for a very complete break trough Containers.<br/>
+-   [Youtube - OneLoneCoder](https://www.youtube.com/watch?v=6OoSgY6NVVk) for a very complete break trough on Containers.<br/>
+-   The Evaluation Sheets ? 👀 - For a better comprehension of the subjects...<br/>
