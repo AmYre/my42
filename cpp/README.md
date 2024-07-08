@@ -15,13 +15,13 @@ I do not see myself using C outside of learning purposes, but C++ is a nice plus
 About the language itself I have nothing much to say, very versatile, lots of useful libs, loved the overriding of operators and templates.<br/>
 I remember having a good laugh when discovering templates 🤣.<br/>
 I watched the videos of intra 42 to document myself, and as expected, 42 philosophy is so encline to embrace robustness in code. The videos are all about enforcing rules, good practices, const, private, types...<br/>
-But when templates are finally approached, they are described as one of the best and powerful tools (they gibe birth to containers).<br/>
+But when templates are finally approached, they are described as one of the more powerful tools in c++ (they give birth to containers).<br/>
 Seems like the power of it resides in removing the types by making everything generic 🤣🤣<br/>
-I mean...Why bother then? Go directly code in JS 🤣🤣🤣<br/>
+I mean...Why bother being so conservative then? Go directly code in JS 🤣🤣🤣<br/>
 Anyway.<br/>
 <br/>
-C++ was fine, cool to learn and have by my side. I want to focus on the modules.<br/>
-On how 42 didactise, create subjects, pretexts, to learn it.<br/>
+C++ was fine, cool to learn and to have as a skill. But I want to spill the tea on the modules themselves.<br/>
+On how 42 didactize, create subjects.<br/>
 <br/>
 And to be franc. It is close to catastrophic.<br/>
 <br/>I love my school. Proud to be a stud. Wearing the merchs. Bragging about it outside.<br/>
@@ -31,3 +31,9 @@ They are bad to make you understand what you have to learn. And even when you do
 I will not do a list of everything but, to sum up, they are so bad that you will fail them if you play the game.<br/>
 The other studs I had the opportunity to chat about this, agree on the fact that you want the evaluation sheet before showing up to the real evaluation to anticipate those last minute appearances.<br/>
 That is how bad it is. When bypassing the system becomes the system, you know something went wrong.<br/>
+
+## the resources used
+
+-   The C PlusPlus documentation (https://cplusplus.com)<br/>
+-   [Youtube - Code Beauty](https://www.youtube.com/watch?v=_NlRcT5gWpo&list=PL43pGnjiVwgR9BloyT0OgsMo8d_hylBv0) for a generic approach of C++.<br/>
+-   [Youtube - OneLoneCoder](https://www.youtube.com/watch?v=6OoSgY6NVVk) for a very complete break trough Containers.<br/>
