@@ -29,8 +29,8 @@ But i am not blind. Nor clueless about education...<br/>
 The subjects are bad!<br/>
 They are bad to make you understand what you have to learn. And even when you do get what is to be focused on, they will be evaluated part who will just appear out of thin air.<br/>
 I will not do a list of everything but, to sum up, they are so bad that you will fail them if you play the game.<br/>
-The other studs I had the opportunity to chat about this, agree on the fact that you want the evaluation sheet before showing up to the real evaluation to anticipate those last minute appearances.<br/>
-That is how bad it is. When bypassing the system becomes the system, you know something went wrong.<br/>
+The other studs I had the opportunity to chat with about this, agree on the fact that you want the evaluation sheet before showing up to the real evaluation to anticipate those last minute appearances.<br/>
+When bypassing the system becomes the system, you know something went wrong...<br/>
 
 ## The resources used
 
