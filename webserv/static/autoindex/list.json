@@ -1,0 +1,11 @@
+{
+  "autoindex": "dir",
+  "default": "dir",
+  "del": "dir",
+  "error": "dir",
+  "game": "dir",
+  "get": "dir",
+  "home": "dir",
+  "post": "dir",
+  "upload": "dir"
+}

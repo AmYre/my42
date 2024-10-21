@@ -1,0 +1,63 @@
+main{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 42px;
+}
+
+.my-form{
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+	max-width: 300px;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #00000061;
+	color: rgba(2, 1, 37, 0.712);
+}
+
+.inputs{
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+input{
+	border : none; width : 100%; height: 25px; background-color: aliceblue; padding: 10px;
+}
+
+dialog{
+	position: relative;
+	width: 70vw;
+	height: 65vh!important;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px #00000061;
+	padding: 50px;
+}
+
+dialog img{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: -1;
+}
+
+dialog h2{
+	color: rgba(2, 1, 37, 0.712);
+	font-size: 1.5rem;
+}
+
+dialog p{
+	color: rgba(2, 1, 37, 0.712);
+	font-size: 1.3rem;
+}
+
+.close{
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 50px;
+	cursor: pointer;
+}

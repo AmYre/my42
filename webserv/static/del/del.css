@@ -1,0 +1,27 @@
+fieldset{
+	width: 263px;
+	border-radius: 5px;
+    border: 3px solid white;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	margin: 20px;
+	gap: 10px;
+	font-size: 24px;;
+}
+
+form div{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#downloadButton{
+	margin-left: 10px;
+}
+
+#downloadButton:hover{
+	cursor: pointer;
+}

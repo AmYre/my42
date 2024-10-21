@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Web Server GET</title>
+	<link rel="icon" href="/assets/favi.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/get/get.css">
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+	<script src="/static/get/get.js" defer></script>
+	<link rel="stylesheet" href="/static/home/index.css">
+	<script src="/static/home/index.js"></script>
+</head>
+
+<body>
+	<div style="position: absolute; left: 0px; top: 0px;">
+		<a href="/" style="position: absolute; left: 40px; top: 40px;">
+			<div class="logo flex">
+				<img style="width: 60px;" src="/assets/logo.png" alt="logo webserv">
+				<p class="hide orbitron"><a href="/">WebServ</a></p>
+			</div>
+		</a>
+	</div>
+	<h1 class="orbitron">Web Server Get Method</h1>
+	<h2 class="font">Congratulations! You have successfully tested the Get Method</h2>
+	<p style="text-align: center;">La méthode GET est l'une des méthodes HTTP les plus couramment utilisées. Elle permet
+		aux clients
+		(comme les navigateurs web) de demander des ressources (comme des pages HTML, des images, des vidéos) à un
+		serveur web. Voici quelques étapes simplifiés :</p>
+	<div style="width : 100vw" class="carousel" duration="7000">
+		<ul tabindex="0">
+			<li id="c1_slide1" class="selected">
+				<div style="border-radius: 5px; box-shadow: 1px 1px 15px #00000059;">
+					<div style="background: url(../../assets/1.png) center center / cover no-repeat;"></div><span
+						style="font-size : 12px">1 - Initialisation du Serveur</span><br />
+					<p style="font-size: 10px;">
+						Le serveur accepte les connexions entrantes des clients sur une adresse et un port.
+						Pour chaque client un nouveau socket est creé et permet la communication.</p>
+				</div>
+			</li>
+			<li id="c1_slide2">
+				<div style="border-radius: 5px; box-shadow: 1px 1px 15px #00000059;">
+					<div style="background: url(../../assets/2.png) center center / cover no-repeat;"></div><span
+						style="font-size : 12px">2 - Lecture de la Requête</span><br />
+					<p style="font-size: 10px;">Le serveur lit la requête HTTP envoyée par le client pour extraire la
+						méthode HTTP (GET) et le
+						chemin de la ressource demandée.</p>
+				</div>
+			</li>
+			<li id="c1_slide3">
+				<div style="border-radius: 5px; box-shadow: 1px 1px 15px #00000059;">
+					<div style="background: url(../../assets/3.png) center center / cover no-repeat;"></div><span
+						style="font-size : 12px">3 - Traitement de la Requête</span><br />
+					<p style="font-size: 10px;">Si le fichier demandé existe, on le lit à partir du système de fichiers.
+					</p>
+				</div>
+			</li>
+			<li id="c1_slide4">
+				<div style="border-radius: 5px; box-shadow: 1px 1px 15px #00000059;">
+					<div style="background: url(../../assets/4.png) center center / cover no-repeat;"></div><span
+						style="font-size : 12px">4 - Envoi de la Réponse HTTP</span><br />
+					<p style="font-size: 10px;">Le serveur construit une réponse HTTP avec les en-têtes
+						appropriés [Content-Length] [Content-Type] et on envoie</p>
+				</div>
+			</li>
+			<li id="c1_slide5">
+				<div style="border-radius: 5px; box-shadow: 1px 1px 15px #00000059;">
+					<div><i class="fa-solid fa-hand-point-right" style="font-size: 100px; color: #E5C048;"></i></div>
+					<span style="font-size : 12px">Découvrez la
+						suite...</span><br />
+					<a style="background-color: #E5C048; color: white!important;" href="/static/post/post.html">Go to
+						POST
+						METHOD</a>
+				</div>
+			</li>
+		</ul>
+		<ol>
+			<li class="selected"><a href="#c1_slide1"></a></li>
+			<li><a href="#c1_slide2"></a></li>
+			<li><a href="#c1_slide3"></a></li>
+			<li><a href="#c1_slide4"></a></li>
+			<li><a href="#c1_slide5"></a></li>
+		</ol>
+		<div class="prev">&lsaquo;</div>
+		<div class="next">&rsaquo;</div>
+	</div>
+
+</body>
+
+<footer class="sign" style="padding-bottom: 20px;">lbarry / amben-ha / mvachera</footer>
+
+
+</html>
