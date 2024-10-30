@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 02:39:10 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/19 23:44:56 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/10/30 01:55:52 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,12 @@ struct serverConf
 	std::map<std::string, std::string> allowed_methods;
 	std::string default_page;
 	std::string error_page;
-	int max_size;
+	int max_file_size;
+	int max_body_size;
 	bool error_found;
 	bool autoindex;
 
-	serverConf() : port(0), max_size(200), error_found(false), autoindex(false) {};
+	serverConf() : port(0), max_file_size(200), max_body_size(10000), error_found(false), autoindex(false) {};
 };
 
 struct request
@@ -138,6 +139,7 @@ void parse_error_page(const std::string &line, serverConf &server);
 void parse_hostname(const std::string &line, serverConf &server);
 void parse_server_name(const std::string &line, serverConf &server);
 void parse_port(const std::string &line, serverConf &server);
+void parse_max_file_size(const std::string &line, serverConf &server);
 void parse_max_body_size(const std::string &line, serverConf &server);
 std::string parse_location(const std::string &line);
 std::string parse_route_root(const std::string &line);
@@ -151,6 +153,7 @@ void check_directories(request &req);
 void check_rooting(request &req);
 void handle_granted(int client_fd, request &req);
 void handle_autoindex(int client_fd);
+void server_checks(serverConf &server, std::ifstream &file);
 
 // SIGNAL HANDLING
 void handle_signal(int signal);

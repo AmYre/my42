@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 02:38:31 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/16 21:52:28 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/10/28 03:15:56 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void call_POST_CGI(const std::string &body, int client_fd)
 	{
 		close(pipefd[0]);
 		int result = write(pipefd[1], body.c_str(), body.size());
-		if (!result || result == -1)
+		if (result <= 0)
 			close(client_fd);
 		close(pipefd[1]);
 		waitpid(pid, NULL, WNOHANG);
@@ -110,7 +110,6 @@ void call_AUTOINDEX_CGI(request &req)
 	if (pid == 0)
 	{
 		std::string dir = "DIR=" + req.path;
-		std::cout << "dir in call cgi: " << dir << std::endl;
 		char *argv[] = {(char *)"node", (char *)"./cgi-bin/autoindex-cgi.js", NULL};
 		char *envp[] = {(char *)dir.c_str(), NULL};
 

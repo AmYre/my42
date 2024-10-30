@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 19:49:04 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/19 23:47:18 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/10/30 01:52:06 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,7 @@ std::string read_file(const std::string &path)
 {
 	std::ifstream file(path.c_str(), std::ios::binary);
 	if (!file)
-	{
-		std::cerr << "Error: could not read file " << path << std::endl;
 		return "";
-	}
 	std::ostringstream ss;
 	ss << file.rdbuf();
 	return ss.str();
@@ -100,7 +97,7 @@ std::string read_file(const std::string &path)
 
 void upload_file(request &req)
 {
-	if (req.current_conf && req.file.size() > static_cast<size_t>(req.current_conf->max_size * 1024 * 1024))
+	if (req.current_conf && req.file.size() > static_cast<size_t>(req.current_conf->max_file_size * 1024 * 1024))
 	{
 		req.response = "LIMIT";
 		return;
@@ -168,7 +165,7 @@ void write_response200(int client_fd, int status, request &req, const std::strin
 	response << "\r\n";
 	response << content;
 	int result = write(client_fd, response.str().c_str(), response.str().size());
-	if (!result || result == -1)
+	if (result <= 0)
 		close(client_fd);
 }
 
@@ -184,7 +181,7 @@ void write_response300(int client_fd, std::string redirect_infos)
 	response << "Location: " << url << "\r\n\r\n";
 
 	int result = write(client_fd, response.str().c_str(), response.str().size());
-	if (!result || result == -1)
+	if (result <= 0)
 		close(client_fd);
 }
 
@@ -200,6 +197,8 @@ void write_response400(int client_fd, int status, const std::string &err_file)
 	else
 		path_file = err_file;
 	std::string file = read_file(path_file);
+	if (file.empty())
+		file = read_file("./static/error/error.html");
 	std::string type = get_status(status);
 	response << "HTTP/1.1 " << status << type << "\r\n";
 	response << "Content-Type: text/html\r\n";
@@ -207,22 +206,24 @@ void write_response400(int client_fd, int status, const std::string &err_file)
 	response << "\r\n";
 	response << file;
 	int result = write(client_fd, response.str().c_str(), response.str().size());
-	if (!result || result == -1)
+	if (result <= 0)
 		close(client_fd);
 }
 
 void write_response500(int client_fd, int status, const std::string &err_file)
 {
-	std::string content_ise = read_file(err_file);
+	std::string content = read_file(err_file);
+	if (content.empty())
+		content = read_file("./static/error/error.html");
 	std::ostringstream response;
 	std::string type = get_status(status);
 	response << "HTTP/1.1 " << status << type << "\r\n";
-	response << "Content-Length: " << content_ise.size() << "\r\n";
+	response << "Content-Length: " << content.size() << "\r\n";
 	response << "Content-Type: text/html\r\n";
 	response << "\r\n";
-	response << content_ise;
+	response << content;
 	int result = write(client_fd, response.str().c_str(), response.str().size());
-	if (!result || result == -1)
+	if (result <= 0)
 		close(client_fd);
 }
 
@@ -433,24 +434,27 @@ void print_servers_info(const std::vector<serverConf> &servers)
 			std::cout << YELLOW << "serve error_page " << it->error_page << std::endl;
 		if (!it->error_root.empty())
 			std::cout << YELLOW << "server error_root " << it->error_root << std::endl;
-		if (it->max_size)
-			std::cout << GREEN << "server max_body_size " << it->max_size << std::endl;
+		if (it->max_file_size)
+			std::cout << GREEN << "server max_file_size " << it->max_file_size << std::endl;
+		if (it->max_body_size)
+			std::cout << GREEN << "server max_body_size " << it->max_body_size << std::endl;
 		if (!it->routes.empty())
 		{
 			std::cout << MAGENTA << "server routes: " << std::endl;
 			for (std::map<std::string, std::string>::const_iterator route = it->routes.begin(); route != it->routes.end(); ++route)
-			{
 				std::cout << MAGENTA << "location: " << route->first << " root: " << route->second << std::endl;
-				std::map<std::string, std::string>::const_iterator method = it->allowed_methods.find(route->first);
-				if (method != it->allowed_methods.end())
-					std::cout << RED << "allowed methods for this route: " << method->second << RESET << std::endl;
-			}
 		}
 		if (!it->redirects.empty())
 		{
 			std::cout << WHITE << "server redirects: " << std::endl;
 			for (std::map<std::string, std::string>::const_iterator redirect = it->redirects.begin(); redirect != it->redirects.end(); ++redirect)
 				std::cout << WHITE << "location: " << redirect->first << " redirect: " << redirect->second << std::endl;
+		}
+		if (!it->allowed_methods.empty())
+		{
+			std::cout << YELLOW << "server allowed_methods: " << std::endl;
+			for (std::map<std::string, std::string>::const_iterator method = it->allowed_methods.begin(); method != it->allowed_methods.end(); ++method)
+				std::cout << YELLOW << "location: " << method->first << " methods: " << method->second << std::endl;
 		}
 		if (it->autoindex)
 			std::cout << BLUE << "server autoindex is on" << RESET << std::endl;
@@ -464,17 +468,33 @@ void print_servers_info(const std::vector<serverConf> &servers)
 	}
 }
 
+void parse_max_file_size(const std::string &line, serverConf &server)
+{
+	std::string key, value;
+	std::istringstream iss(line);
+	if (line.find("max_file_size") != std::string::npos)
+	{
+		iss >> key >> value;
+		server.max_file_size = atoi(value.c_str());
+		if (server.max_file_size < 1 || server.max_file_size > 200)
+		{
+			std::cerr << "Error: max_file_size must be between 1-200MB" << std::endl;
+			exit(1);
+		}
+	}
+}
+
 void parse_max_body_size(const std::string &line, serverConf &server)
 {
 	std::string key, value;
 	std::istringstream iss(line);
-	if (line.find("max_size") != std::string::npos)
+	if (line.find("max_body_size") != std::string::npos)
 	{
 		iss >> key >> value;
-		server.max_size = atoi(value.c_str());
-		if (server.max_size < 1 || server.max_size > 200)
+		server.max_body_size = atoi(value.c_str());
+		if (server.max_body_size < 1 || server.max_body_size > 10000)
 		{
-			std::cerr << "Error: max_size must be between 1-200MB" << std::endl;
+			std::cerr << "Error: max_body_size must be between 1-10000 Bytes" << std::endl;
 			exit(1);
 		}
 	}
@@ -569,6 +589,26 @@ void parse_default_page(const std::string &line, serverConf &server)
 	}
 }
 
+void server_checks(serverConf &server, std::ifstream &file)
+{
+	// valid port limits
+	if (server.port == 0 || server.port > 65535 || server.port < 1024)
+	{
+		file.close();
+		if (server.port == 0)
+			std::cerr << RED << "Error: No port specified" << RESET << std::endl;
+		else
+			std::cerr << RED << "Error: Port must be between 1024-65535" << RESET << std::endl;
+		exit(1);
+	}
+	// redirects override routes with the same location within server block
+	for (std::map<std::string, std::string>::iterator it = server.redirects.begin(); it != server.redirects.end(); ++it)
+	{
+		if (server.routes.find(it->first) != server.routes.end())
+			server.routes.erase(it->first);
+	}
+}
+
 std::string parse_allowed_methods(const std::string &line)
 {
 	std::string allowed = "";
@@ -585,7 +625,6 @@ std::string parse_allowed_methods(const std::string &line)
 
 bool is_directory(const std::string &path)
 {
-	std::cout << "path: " << path << std::endl;
 	struct stat info;
 	std::string rel_path = "." + path;
 	if (stat(rel_path.c_str(), &info) != 0)
@@ -651,7 +690,7 @@ void handle_autoindex(int client_fd)
 	response << "\r\n";
 	response << content;
 	int result = write(client_fd, response.str().c_str(), response.str().size());
-	if (!result || result == -1)
+	if (result <= 0)
 		close(client_fd);
 }
 

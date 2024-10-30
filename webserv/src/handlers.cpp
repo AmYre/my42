@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:21:59 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/19 23:45:34 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/10/21 23:44:52 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void handleOut_response(int client_fd, request &req)
 {
 	if (req.response == "GRANTED")
 		handle_granted(client_fd, req);
-	else
+	else if (!req.response.empty())
 	{
 		if (req.response == "DENIED")
 		{
@@ -79,7 +79,6 @@ void handleOut_response(int client_fd, request &req)
 			int result = write(client_fd, response, strlen(response));
 			if (result <= 0)
 				close(client_fd);
-			req = request();
 		}
 		else if (req.response == "ERROR")
 		{
@@ -87,33 +86,17 @@ void handleOut_response(int client_fd, request &req)
 				write_response500(client_fd, 500, req.current_conf->error_page);
 			else
 				write_response500(client_fd, 500, "./static/error/500.html");
-			req = request();
 		}
 		else if (req.response == "UPLOADED")
-		{
-			std::cerr << "File uploaded successfully: " << req.filename << std::endl;
 			write_response200(client_fd, 200, req, "File uploaded successfully");
-			req = request();
-		}
 		else if (req.response == "LIMIT")
-		{
-			std::cerr << "File too big: " << req.filename << std::endl;
 			write_response400(client_fd, 413, "./static/error/413.html");
-			req = request();
-		}
 		else if (req.response == "REDIRECT")
-		{
 			write_response300(client_fd, req.path);
-			req = request();
-		}
 		else if (req.response == "AUTOINDEX")
 			handle_autoindex(client_fd);
 		else if (req.response == "DEFAULT PAGE")
-		{
-			if (req.current_conf->default_page[0] != '.')
-				req.current_conf->default_page.insert(0, 1, '.');
 			write_response400(client_fd, 403, req.current_conf->default_page);
-		}
 		else if (req.response == "NOT ALLOWED")
 			write_response400(client_fd, 405, "./static/error/405.html");
 		else if (req.response == "NOT IMPLEMENTED")

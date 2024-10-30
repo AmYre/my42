@@ -11,6 +11,33 @@ body {
 	margin: 0;
 }
 
+header {
+	position: relative;
+}
+
+.user{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	position: absolute;
+    left: 2%;
+    top: 4%;
+	color: #f8f9fa;
+	font-size: 3rem;
+	transition: all 0.5s ease-in-out;
+}
+
+.user:hover{
+	color: #0d47a1;
+	scale: 1.1;
+}
+
+.user p{
+	margin: 0;
+	font-size: 1.5rem;
+}
+
 a{
 	text-decoration : none;
 	color: inherit;

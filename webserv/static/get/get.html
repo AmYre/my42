@@ -20,7 +20,7 @@
 </head>
 
 <body>
-	<div style="position: absolute; left: 0px; top: 0px;">
+	<div style="position: absolute; right: 25%; top: 0px;">
 		<a href="/" style="position: absolute; left: 40px; top: 40px;">
 			<div class="logo flex">
 				<img style="width: 60px;" src="/assets/logo.png" alt="logo webserv">
@@ -28,6 +28,10 @@
 			</div>
 		</a>
 	</div>
+	<a class="user" href="/static/home/session.html">
+		<i class="fa-solid fa-user"></i>
+		<p>{{session_id}}</p>
+	</a>
 	<h1 class="orbitron">Web Server Get Method</h1>
 	<h2 class="font">Congratulations! You have successfully tested the Get Method</h2>
 	<p style="text-align: center;">La méthode GET est l'une des méthodes HTTP les plus couramment utilisées. Elle permet
