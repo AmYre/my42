@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:21:59 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/21 23:44:52 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:45:41 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 void handleIn_request(int client_fd, request &req, std::vector<serverConf> &server_configs)
 {
 	std::string content = read_socket(client_fd);
-
 	parse_request(content, req);
 	// my_prints(content, req);
 	find_server_conf(server_configs, req);
+	if (!allowed_path(req.path))
+	{
+		req.response = "DENIED";
+		return;
+	}
 
 	if (strcmp(req.method.c_str(), "GET") == 0)
 	{

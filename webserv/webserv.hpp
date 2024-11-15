@@ -6,13 +6,14 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 02:39:10 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/30 01:55:52 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/10 19:33:37 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <algorithm>
+#include <arpa/inet.h>
 #include <cerrno>
 #include <csignal>
 #include <cstdlib>
@@ -23,6 +24,7 @@
 #include <iostream>
 #include <limits>
 #include <map>
+#include <netdb.h>
 #include <netinet/in.h>
 #include <sstream>
 #include <sys/socket.h>
@@ -58,10 +60,9 @@ struct serverConf
 	std::string error_page;
 	int max_file_size;
 	int max_body_size;
-	bool error_found;
 	bool autoindex;
 
-	serverConf() : port(0), max_file_size(200), max_body_size(10000), error_found(false), autoindex(false) {};
+	serverConf() : port(0), max_file_size(200), max_body_size(10000), autoindex(false) {};
 };
 
 struct request
@@ -82,7 +83,7 @@ struct request
 	bool is_id;
 	serverConf *current_conf;
 
-	request() : length(0), ongoing(false), is_id(false) {};
+	request() : length(0), ongoing(false), is_id(false), current_conf(NULL) {};
 };
 
 // EPOLL MAIN LOOP
@@ -154,6 +155,7 @@ void check_rooting(request &req);
 void handle_granted(int client_fd, request &req);
 void handle_autoindex(int client_fd);
 void server_checks(serverConf &server, std::ifstream &file);
+bool is_valid_url(const std::string &url);
 
 // SIGNAL HANDLING
 void handle_signal(int signal);

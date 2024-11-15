@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:20:44 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/16 17:56:01 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:12:46 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 std::vector<int> create_server_sockets(std::vector<serverConf> &server_configs)
 {
+	struct in_addr addr;
+
 	std::vector<int> server_sockets;
 	for (std::vector<serverConf>::const_iterator it = server_configs.begin(); it != server_configs.end(); ++it)
 	{
@@ -24,12 +26,11 @@ std::vector<int> create_server_sockets(std::vector<serverConf> &server_configs)
 			std::cerr << "Failed to create socket: " << strerror(errno) << std::endl;
 			exit(1);
 		}
-		std::cout << "Server socket created: " << server_socket << " on port " << it->port << std::endl;
 
 		int opt = 1;
 		if (setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt)) == -1)
 		{
-			std::cerr << "Failed to set SO_REUSEADDR: " << strerror(errno) << std::endl;
+			std::cerr << "Failed to set SO_REUSEADDR to make the server reboots rapidly: " << strerror(errno) << std::endl;
 			close(server_socket);
 			exit(1);
 		}
@@ -42,8 +43,13 @@ std::vector<int> create_server_sockets(std::vector<serverConf> &server_configs)
 		}
 		struct sockaddr_in server_address;
 		server_address.sin_family = AF_INET;
-		server_address.sin_addr.s_addr = INADDR_ANY;
 		server_address.sin_port = htons(it->port);
+		if (it->hostname == "localhost")
+			server_address.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+		else if (inet_pton(AF_INET, it->hostname.c_str(), &addr) == 1)
+			server_address.sin_addr.s_addr = addr.s_addr;
+		else
+			server_address.sin_addr.s_addr = INADDR_ANY;
 
 		if (bind(server_socket, (struct sockaddr *)&server_address, sizeof(server_address)) == -1)
 		{
@@ -59,6 +65,7 @@ std::vector<int> create_server_sockets(std::vector<serverConf> &server_configs)
 			exit(1);
 		}
 
+		std::cout << "Server socket created: " << server_socket << " on port " << it->port << std::endl;
 		server_sockets.push_back(server_socket);
 	}
 	return server_sockets;

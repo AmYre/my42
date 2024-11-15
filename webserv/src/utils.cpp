@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 19:49:04 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/30 01:52:06 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:10:56 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,12 @@ std::string get_status(int status)
 	status_codes[201] = "Created";
 	status_codes[202] = "Accepted";
 	status_codes[204] = "No Content";
+	status_codes[300] = "Multiple Choices";
 	status_codes[301] = "Moved Permanently";
 	status_codes[302] = "Found";
 	status_codes[303] = "See Other";
 	status_codes[304] = "Not Modified";
+	status_codes[305] = "Use Proxy";
 	status_codes[307] = "Temporary Redirect";
 	status_codes[308] = "Permanent Redirect";
 	status_codes[400] = "Bad Request";
@@ -171,18 +173,30 @@ void write_response200(int client_fd, int status, request &req, const std::strin
 
 void write_response300(int client_fd, std::string redirect_infos)
 {
+	std::cout << "Redirecting to: " << redirect_infos << std::endl;
 	std::istringstream redirect(redirect_infos);
 	std::string status, url;
 	redirect >> status >> url;
 	std::string type = get_status(atoi(status.c_str()));
+	std::cout << "Redirecting to: " << url << std::endl;
+	std::cout << "Status: " << status << std::endl;
+	std::cout << "Type: " << type << std::endl;
+
+	std::string body = "<html><head><title>Redirect</title></head><body>Redirected to another address</body></html>";
 
 	std::ostringstream response;
 	response << "HTTP/1.1 " << status << type << "\r\n";
-	response << "Location: " << url << "\r\n\r\n";
+	response << "Location: " << url << "\r\n";
+	response << "Content-Type: text/html\r\n";
+	response << "Content-Length: " << body.length() << "\r\n";
+	response << "Connection: close\r\n";
+	response << "\r\n";
+	response << body;
 
 	int result = write(client_fd, response.str().c_str(), response.str().size());
 	if (result <= 0)
-		close(client_fd);
+		std::cerr << "Failed to write response: " << strerror(errno) << std::endl;
+	close(client_fd);
 }
 
 void write_response400(int client_fd, int status, const std::string &err_file)
@@ -390,6 +404,8 @@ void read_length(std::istringstream &stream, std::string &line, request &req)
 
 bool allowed_path(const std::string &path)
 {
+	if (path == "/" || path == "/upload")
+		return true;
 	std::vector<std::string> allowed_paths;
 	allowed_paths.push_back("/static/");
 	allowed_paths.push_back("/public/");
@@ -416,6 +432,8 @@ void find_server_conf(std::vector<serverConf> &server_configs, request &req)
 			req.current_conf = &(*it);
 			break;
 		}
+		else
+			req.current_conf = &server_configs[0];
 	}
 }
 
@@ -562,6 +580,29 @@ std::string parse_redirection(const std::string &line)
 	{
 		size_t redirect_len = (line.find("\n")) - (line.find("redirect ") + 9);
 		redirect = line.substr(line.find("redirect ") + 9, redirect_len);
+		std::istringstream iss(redirect);
+		std::string status, url;
+
+		if (!(iss >> status >> url))
+			return "";
+
+		if (status.length() != 3) // Status should be 3 digits
+			return "";
+
+		for (size_t i = 0; i < status.length(); ++i)
+		{
+			if (!isdigit(status[i]))
+				return "";
+		}
+
+		int status_num = atoi(status.c_str());
+		if (status_num < 300 || status_num > 308)
+			return "301";
+
+		if (!is_valid_url(url))
+			return "";
+
+		redirect = status + " " + url;
 	}
 	return (redirect);
 }
@@ -692,6 +733,28 @@ void handle_autoindex(int client_fd)
 	int result = write(client_fd, response.str().c_str(), response.str().size());
 	if (result <= 0)
 		close(client_fd);
+}
+
+bool is_valid_url(const std::string &url)
+{
+	if (url.length() < 4)
+		return false;
+
+	// Must start with http:// or https://
+	if (url.substr(0, 7) != "http://" && url.substr(0, 8) != "https://")
+		return false;
+
+	// Must have something after the protocol
+	if (url.find("://") == url.length() - 3)
+		return false;
+
+	// Check for invalid characters
+	const std::string valid_chars =
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~:/?#[]@!$&'()*+,;=";
+	if (url.find_first_not_of(valid_chars) != std::string::npos)
+		return false;
+
+	return true;
 }
 
 void handle_signal(int signal)

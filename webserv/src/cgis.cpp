@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 02:38:31 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/28 03:15:56 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/08 18:36:44 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void call_GET_CGI(request &req)
 
 	if (pid == 0)
 	{
-		std::string path = "PATH=" + req.path;
+		std::string path = "PATH_INFO=" + req.path;
 		char *argv[] = {(char *)"node", (char *)"./cgi-bin/get-cgi.js", NULL};
 		char *envp[] = {(char *)path.c_str(), NULL};
 
@@ -86,9 +86,8 @@ void call_DEL_CGI()
 
 	if (pid == 0)
 	{
-		std::string content_type = "CONTENT_TYPE=application/x-www-form-urlencoded";
 		char *argv[] = {(char *)"node", (char *)"./cgi-bin/del-cgi.js", NULL};
-		char *envp[] = {(char *)content_type.c_str(), NULL};
+		char *envp[] = {NULL};
 
 		execve("/usr/bin/node", argv, envp);
 		std::cerr << "Failed to exec DEL CGI script" << std::endl;

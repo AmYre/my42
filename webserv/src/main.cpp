@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 23:27:13 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/13 22:52:23 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/10 21:06:34 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 		int waiting_fds = epoll_wait(epoll_fd, events, MAX_EVENTS, 5000);
 		if (waiting_fds == -1)
 		{
-			if (errno == EINTR) // Interruption par un signal
+			if (errno == EINTR)
 				continue;
 			std::cerr << "Failed to wait on epoll: " << strerror(errno) << std::endl;
 			break;
@@ -78,7 +78,6 @@ int main(int argc, char **argv)
 					}
 
 					event.events = EPOLLOUT | EPOLLIN;
-					;
 					event.data.fd = client_socket;
 					if (epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_socket, &event) == -1)
 					{

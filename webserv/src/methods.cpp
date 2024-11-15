@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/15 02:52:50 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/30 02:11:18 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:46:23 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,8 @@ void handle_GET(request &req)
 		req.path = "/static/home/index.html";
 	if (strcmp(req.path.c_str(), "/static/test-cgi") == 0)
 		call_GET_CGI(req);
-	// if (!allowed_path(req.path))
-	// {
-	// 	req.response = "DENIED";
-	// 	return;
-	// }
 	if (strcmp(req.path.c_str(), "/static/del/del.html") == 0)
 		call_DEL_CGI();
-	// error with this condition in certain cases?
 	check_rooting(req);
 	if (check_redirects(req))
 		return;
@@ -57,6 +51,11 @@ void handle_POST(int client_fd, request &req)
 void handle_DEL(request &req)
 {
 	std::string file_path = "." + std::string(req.path);
+	if (file_path.find("/public/") == std::string::npos)
+	{
+		req.response = "DENIED";
+		return;
+	}
 	if (std::remove(file_path.c_str()) == 0)
 		req.response = "DELETED";
 	else

@@ -6,7 +6,7 @@
 #    By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 23:26:07 by amben-ha          #+#    #+#              #
-#    Updated: 2024/10/19 20:25:08 by amben-ha         ###   ########.fr        #
+#    Updated: 2024/11/11 22:02:54 by amben-ha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,3 +57,7 @@ re: fclean all
 # export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
 
 # netstat -an | grep :5000 chercher ESTABLISHED ou CLOSE_WAIT pour des connections suspendues
+
+# htop pour voir les processus en live
+
+# curl --resolve layura.com:5000:127.0.25.1 http://layura.com:5000/

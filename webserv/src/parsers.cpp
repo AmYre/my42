@@ -6,7 +6,7 @@
 /*   By: amben-ha <amben-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 23:23:47 by amben-ha          #+#    #+#             */
-/*   Updated: 2024/10/30 01:49:33 by amben-ha         ###   ########.fr       */
+/*   Updated: 2024/11/11 16:47:23 by amben-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,24 @@ std::vector<serverConf> parse_config(const std::string &config_file)
 	{
 		std::cout << YELLOW << "Opened file: " << config_file << RESET << std::endl;
 		std::string line;
+		size_t line_count = 0;
+		const size_t max_lines = 1000;
+		const size_t max_total_size = 1024 * 1024;
+		size_t total_size = 0;
 		while (std::getline(file, line))
 		{
+			line_count++;
+			total_size += line.size();
+			if (line_count > max_lines)
+			{
+				std::cerr << "Error: Exceeded maximum number of lines (" << max_lines << ")" << std::endl;
+				break;
+			}
+			if (total_size > max_total_size)
+			{
+				std::cerr << "Error: Exceeded maximum total size of data (" << max_total_size << " bytes)" << std::endl;
+				break;
+			}
 			if (line.find("server") != std::string::npos)
 			{
 				if (line.find("#") != std::string::npos)
@@ -132,6 +148,8 @@ std::vector<serverConf> parse_config(const std::string &config_file)
 					if (brace_depth == 1)
 						location = "";
 				}
+				if (file.bad())
+					std::cerr << "Error: An error occurred while reading the file." << std::endl;
 				server_checks(server, file);
 				servers.push_back(server);
 			}

@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
 	const fileList = document.getElementById("fileList");
 
+	setTimeout(() => {
+		loadFiles();
+		const loading = document.getElementById("loading-bar-spinner");
+		loading.style.display = "none";
+	}, 500);
+
 	function loadFiles() {
 		fetch("/static/del/list.json")
 			.then((response) => response.json())
@@ -31,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			})
 			.catch((error) => console.error("Error loading files:", error));
 	}
-	loadFiles();
 
 	const deleteButton = document.getElementById("submit");
 	deleteButton.addEventListener("click", function () {

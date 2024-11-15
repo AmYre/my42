@@ -3,7 +3,6 @@
 const querystring = require("querystring");
 const fs = require("fs");
 const logFile = fs.createWriteStream("./log.txt", { flags: "a" });
-logFile.write(process.env.CONTENT_TYPE || "Unknown");
 
 let body = "";
 process.stdin.setEncoding("utf8");
@@ -13,7 +12,7 @@ process.stdin.on("data", (chunk) => {
 });
 
 process.stdin.on("end", () => {
-	logFile.write(`Received body: ${body}\n`);
+	logFile.write(`Received data: ${body}\n`);
 	const postData = querystring.parse(body);
 
 	const name = postData.name || "Unknown";
@@ -27,8 +26,6 @@ process.stdin.on("end", () => {
 		}
 
 		let htmlContent = template.replace("{{name}}", name).replace("{{login}}", login).replace("{{like}}", like);
-
-		logFile.write("Generated HTML content\n");
 
 		process.stdout.on("error", (err) => {
 			if (err.code === "EPIPE") {
@@ -44,11 +41,6 @@ process.stdin.on("end", () => {
 		process.stdout.write("Content-Length: " + Buffer.byteLength(htmlContent) + "\r\n");
 		process.stdout.write("Content-Type: text/html\r\n");
 		process.stdout.write("\r\n");
-		logFile.write("Sent HTTP headers\n");
-
-		process.stdout.write(htmlContent, () => {
-			logFile.write("Sent response to client\n");
-			logFile.end();
-		});
+		process.stdout.write(htmlContent);
 	});
 });
