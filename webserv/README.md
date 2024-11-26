@@ -1,31 +1,24 @@
-`epoll` est une abréviation pour "event poll" (sondage d'événements). C'est une interface fournie par le noyau Linux pour surveiller plusieurs descripteurs de fichiers afin de voir s'ils sont prêts pour des opérations d'E/S (lecture, écriture, etc.).
+# WEBSERV
 
-### Pourquoi `epoll` a été créé ?
+A deep dive into sockets, CGI and HTTP protocol
 
-`epoll` a été introduit pour résoudre les limitations de certaines interfaces précédentes utilisées pour la surveillance des descripteurs de fichiers, telles que `select` et `poll`. Voici un aperçu des méthodes précédentes et des problèmes qu'elles présentaient :
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/home.png" width="100%"/>
+</p>
 
-### Méthodes précédentes
+## How was it?
 
-1. **`select`** :
+What a project. The best I had to do yet. I learned so much about something we use everyday without really noticing how it works.<br/>
+In Webserv we had to create a HTTP Server that listens to client requests, handles them and gives them a response back. <br/><br/>
+To keep the server at high availability, we want it to focus on just one task: serving the requested resources.<br/>
+So if something else has to be done, like large upload files or any other heavy lifting, we used external scripts called CGI for Common Gateway Interface. <br/>
+They use ENV or STDIN/STDOUT to share data and are universal enough to be done in any language you want. <br/><br/>
+One of the challenges was the config file which complexified the whole project. Taking inspiration from NGNIX, we had to make every element of our server customisable depending on the config chosen by the user. <br/>
 
-    - **Problèmes** :
-        - **Limite de descripteurs de fichiers** : `select` a une limite fixe sur le nombre de descripteurs de fichiers qu'il peut surveiller, définie par la constante `FD_SETSIZE` (souvent 1024).
-        - **Performance** : `select` doit vérifier chaque descripteur de fichier à chaque appel, ce qui peut être inefficace pour un grand nombre de descripteurs.
-        - **Copie de données** : Les ensembles de descripteurs de fichiers doivent être copiés entre l'espace utilisateur et l'espace noyau à chaque appel, ce qui peut être coûteux en termes de performance.
-
-2. **`poll`** :
-    - **Problèmes** :
-        - **Performance** : Bien que `poll` n'ait pas la limite fixe de descripteurs de fichiers de `select`, il doit toujours vérifier chaque descripteur de fichier à chaque appel, ce qui peut être inefficace pour un grand nombre de descripteurs.
-        - **Copie de données** : Comme `select`, `poll` nécessite également la copie de structures de données entre l'espace utilisateur et l'espace noyau.
-
-### Solutions apportées par `epoll`
-
-`epoll` a été conçu pour surmonter ces limitations et offrir une meilleure performance et évolutivité. Voici quelques-unes des solutions qu'il apporte :
-
-1. **Évolutivité** :
-
-    - `epoll` peut gérer un nombre très élevé de descripteurs de fichiers sans les limitations de `select` et `poll`.
-
-2. **Performance** :
-    - **Notification basée sur les événements** : Contrairement à `select` et `poll`, `epoll` utilise un modèle basé sur les événements. Une fois qu'un descripteur de fichier est ajouté à l'instance `epoll`, le noyau surveille les événements et les signale uniquement lorsque des événements se produisent. Cela évite la nécessité de vérifier chaque descripteur de fichier à chaque appel.
-    - **Pas de copie de données** : `epoll` utilise une interface de liste de descripteurs de fichiers, ce qui évite la copie répétée de structures de données entre l'espace utilisateur et l'espace noyau.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/get.png" width="50%"/>
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/post.png" width="50%"/>
+</p>
+<br/><br/>

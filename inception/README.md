@@ -25,4 +25,4 @@ I recommend decomposing everything bit by bit.<br/><br/><br/>
 
 -   [The Inception Tutotial - by our 42 Paris jcluzet/mprigent](https://tuto.grademe.fr/inception/)<br/>
 -   [Youtube - Techworld with Nana](https://www.youtube.com/watch?v=pg19Z8LL06w) for a global approach of docker.<br/>
--   [Youtube - OneLoneCoder](https://www.youtube.com/watch?v=6OoSgY6NVVk) a concrete use case of docker compose.<br/>
+-   [Youtube - YouSuckAtSubnetting](https://www.youtube.com/watch?v=DM65_JyGxCo) a concrete use case of docker compose.<br/>
