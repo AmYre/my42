@@ -1,0 +1,226 @@
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+
+<div class="mode-container">
+	<div class="avatar-container">
+		<img src="" alt="avatar" id="avatar-img" style="border-radius: 100%; width: 150px">
+		<div class="righteous" id="avatar-name"></div>
+		<div class="logout-button" onclick="logOut()">
+			<img src="/static/img/exit.png">logout
+		</div>
+	</div>
+	<script>
+		displayAvatar();
+	</script>
+	<div class="heading-container">
+		<h1 class="monoton heading" data-lang="modeTitle">GAME MODE</h1>
+	</div>
+	<div class="scores-container">
+		<a id="dashUser" href="">
+			<img src="static/img/scoresMachine.png">
+		</a>
+	</div>
+	<script>
+		var userM = JSON.parse(localStorage.getItem("pongAppState"));
+		if (!userM || !userM.user || !userM.user.login || !userM.user.login.length) {
+			logOut();
+		}
+		document.getElementById("dashUser").href = `/dashboard/?user=${userM.user.login}`;
+	</script>
+	<div id="image-format">
+		<div class="image-container">
+			<div class="dm-flip-card">
+				<div class="image dm-front-card" style="background-image: url('/static/img/cab1.png');"
+					draggable="false">
+					<h2 class="pix text1 typed1" id="typed1">1 </br>Player</br> Game</h2>
+				</div>
+				<div class="dm-back-card-one">
+					<form onsubmit="event.preventDefault(); handleModeForm(this);">
+						<div class="righteous options" style="color: white" data-lang="pspeed_title">Paddle Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pspeed" name="pspeed">
+							<span class="pix slider-text" data-value="Normal" >Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="pheight_title" >Paddle Height</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pheight" name="pheight">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballspeed_title">Ball Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballspeed" name="bspeed">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballsize_title">Ball Size</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballsize" name="bsize">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div style="display:flex; justify-content: space-between; align-items: center;">
+							<div class="righteous options" style="color: white">SPACEWARS</div>
+							<label class="switch" for="spacewars-bot">
+								<input type="checkbox" name="spacewars" id="spacewars-bot">
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="wrap-inputs-text">
+							<div class="wrap-label-input">
+								<div class="righteous options" data-lang="player1">Player 1</div>
+								<p class="pix pulsar" id="p1bot"></p>
+							</div>
+							<input type="text" name="p2" value="" hidden>
+							<input type="text" name="p3" value="" hidden>
+
+						</div>
+						<input type="text" hidden name="mode" value="bot">
+						<div
+							style="display:flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+							<img src="/static/img/stick.png" style="width:50px" alt="stick" class="">
+							<button type="submit" class="my-button">
+								<img id="zoom" src="/static/img/zoom.png" />START
+								<img class="coin" src="/static/img/coin.png">
+							</button>
+							<img src="/static/img/btns.png" alt="btns" style="width:60px">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="image-container">
+			<div class="image dm-flip-card">
+				<div class="dm-front-card" style="background-image: url('/static/img/cab2.png');" draggable="false">
+					<h2 class="pix text2 typed2" id="typed2">2 </br>Player</br> Game</h2>
+				</div>
+				<div class="dm-back-card-two">
+					<form onsubmit="event.preventDefault(); handleModeForm(this);">
+						<div class="righteous options" style="color: white" data-lang="pspeed_title">Paddle Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pspeed" name="pspeed">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="pheight_title">Paddle Height</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pheight" name="pheight">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballspeed_title">Ball Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballspeed" name="bspeed">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballsize_title">Ball Size</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballsize" name="bsize">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div style="display:flex; justify-content: space-between; align-items: center;">
+							<div class="righteous options" style="color: white">SPACEWARS</div>
+							<label class="switch" for="spacewars-human">
+								<input type="checkbox" name="spacewars" id="spacewars-human">
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="wrap-inputs-text">
+							<div class="wrap-label-input">
+								<div class="righteous options" data-lang="player1">Player 1</div>
+								<p class="pix pulsar" id="p1human"></p>
+							</div>
+							<div class="wrap-label-input">
+								<label class="righteous options" for="p2-h" data-lang="player2">Player 2</label>
+								<input type="text" class="form-control" name="p2" id="p2-h" placeholder="enter name"
+									required maxlength="10" pattern="[A-Za-z0-9_ ]+"
+									title="Letters, numbers, spaces and dashes only">
+							</div>
+							<input type="text" name="p3" value="" hidden>
+						</div>
+						<input type="text" hidden name="mode" value="human">
+						<div
+							style="display:flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+							<img src="/static/img/stick.png" style="width:50px" alt="stick" class="">
+							<button type="submit" class="my-button">
+								<img id="zoom" src="/static/img/zoom.png" />START
+								<img class="coin" src="/static/img/coin.png">
+							</button>
+							<img src="/static/img/btns.png" alt="btns" style="width:60px">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="image-container">
+			<div class="dm-flip-card">
+				<div class="dm-front-card" style="background-image: url('/static/img/cab3.png');" draggable="false">
+					<h2 class="pix text3 typed3" id="typed3">Multi</br>Player</br>trnmnt</h2>
+				</div>
+				<div class="dm-back-card-three">
+					<form onsubmit="event.preventDefault(); handleModeForm(this);">
+						<div class="righteous options" style="color: white" data-lang="pspeed_title">Paddle Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pspeed" name="pspeed">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="pheight_title">Paddle Height</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="pheight" name="pheight">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballspeed_title">Ball Speed</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballspeed" name="bspeed">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div class="righteous options" style="color: white" data-lang="ballsize_title">Ball Size</div>
+						<div class="range-slider">
+							<input type="range" min="0" max="100" step="25" id="ballsize" name="bsize">
+							<span class="pix slider-text" data-value="Normal">Normal</span>
+						</div>
+						<div style="display:flex; justify-content: space-between; align-items: center;">
+							<div class="righteous options" style="color: white">SPACEWARS</div>
+							<label class="switch" for="spacewars-tourn">
+								<input type="checkbox" name="spacewars" id="spacewars-tourn">
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="wrap-inputs-text">
+							<div class="wrap-label-input">
+								<div class="righteous options" data-lang="player1">Player 1</div>
+								<p class="pix pulsar" id="p1tourn"></p>
+							</div>
+							<div class="wrap-label-input">
+								<label class="righteous options" for="p2-tourn" data-lang="player2">Player 2</label>
+								<input type="text" class="form-control" name="p2" id="p2-tourn" placeholder="enter name"
+									required maxlength="10" pattern="[A-Za-z0-9_ ]+"
+									title="Letters, numbers, spaces and dashes only">
+							</div>
+							<div class="wrap-label-input">
+								<label class="righteous options" for="p3-tourn" data-lang="player3">Player 3</label>
+								<input type="text" class="form-control" name="p3" id="p3-tourn" placeholder="enter name"
+									required maxlength="10" pattern="[A-Za-z0-9_ ]+"
+									title="Letters, numbers, spaces and dashes only">
+							</div>
+						</div>
+						<input type="text" hidden name="mode" value="tourn">
+						<div
+							style="display:flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+							<img src="/static/img/stick.png" style="width:50px" alt="stick" class="">
+							<button type="submit" class="my-button">
+								<img id="zoom" src="/static/img/zoom.png" />START
+								<img class="coin" src="/static/img/coin.png">
+							</button>
+							<img src="/static/img/btns.png" alt="btns" style="width:60px">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<img id="hd-zoom" src="/static/img/zoom.png" />
+	<script>
+		displayPlayer1();
+		displayOptions();
+		applyTranslation();
+	</script>
+</div>

@@ -1,0 +1,76 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# Environnement
+.env
+.venv
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Dépendances et builds
+node_modules/
+/static/
+/staticfiles/
+node_modules
+
+# Hardhat files
+/cache
+/artifacts
+*.pid
+
+# TypeChain files
+/typechain
+/typechain-types
+
+# solidity-coverage files
+/coverage
+/coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+ignition/deployments/chain-31337
+
+/blockchain/contractAddress.json
+/pong/static/contractAddress.json
+
+blockchain/artifacts/build-info/9d479a3b4da67e6c0def8b0a22079539.json
+blockchain/artifacts/contracts/TournamentScore.sol/TournamentScore.dbg.json
+blockchain/artifacts/contracts/TournamentScore.sol/TournamentScore.json
+blockchain/cache/solidity-files-cache.json

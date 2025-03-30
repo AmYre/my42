@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Dashboard</title>
+	<link rel="icon" href="/static/img/42.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Press+Start+2P&family=Righteous&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="/static/css/reset.css">
+	<link rel="stylesheet" href="/static/css/home.css">
+	<link rel="stylesheet" href="/static/css/stars.css">
+	<link rel="stylesheet" href="/static/css/charts.css">
+	<link rel="stylesheet" href="/static/css/dash.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="/static/js/blockchain.js"></script>
+	<script src="/static/js/home.js" defer></script>
+	<script src="/static/js/mode.js" defer></script>
+	<script src="/static/js/dash.js" defer></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body>
+	<input type="hidden" id="statsTotal" value="{{ stats.total }}">
+	<input type="hidden" id="statsBot" value="{{ stats.modes.bot }}">
+	<input type="hidden" id="statsHuman" value="{{ stats.modes.human }}">
+	<input type="hidden" id="statsTourn" value="{{ stats.modes.tourn }}">
+	<input type="hidden" id="statsAttack" value="{{ stats.radar_chart.Attack }}">
+	<input type="hidden" id="statsDefense" value="{{ stats.radar_chart.Defense }}">
+	<input type="hidden" id="statsSpeed" value="{{ stats.radar_chart.Speed }}">
+	<input type="hidden" id="statsMadness" value="{{ stats.radar_chart.Madness }}">
+	<input type="hidden" id="statsWar" value="{{ stats.radar_chart.War }}">
+	<input type="hidden" id="statsAccuracy" value="{{ stats.radar_chart.Accuracy }}">
+	<input type="hidden" id="statsWins" value="{{stats.results.wins}}">
+	<input type="hidden" id="statsLosses" value="{{stats.results.losses}}">
+	<input type="hidden" id="statsDraws" value="{{stats.results.draws}}">
+
+	<div id="stars"></div>
+	<div id="stars2"></div>
+	<div id="stars3"></div>
+	<div class="dashboard-container">
+		<div class="avatar-container">
+			<img src="" alt="avatar" id="avatar-img" style="border-radius: 100%; width: 150px">
+			<div class="righteous" id="avatar-name"></div>
+			<div class="logout-button" onclick="logOutDash()">
+				<img src="/static/img/exit.png">logout
+			</div>
+		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				displayAvatar();
+			});
+		</script>
+		<div id="dashFrame">
+			<h2 class="pix dashboard-heading">Welcome to your dashboard</h2>
+			<div class="wrap-text">
+				<div class="pix text1">Most played opt.: {{ stats.options.most_played }}</div>
+				<div class="pix text2">Most success. opt.: {{ stats.options.most_successful }}</div>
+				<div class="pix text3">Least success. opt.: {{ stats.options.least_successful }}</div>
+				<div class="pix text4">Most played adv.: {{ stats.opponents.most_played }}</div>
+				<div class="pix text5">Most beaten adv.: {{ stats.opponents.most_beaten }}</div>
+			</div>
+			<canvas id="radarChart"></canvas>
+			<div class="wrap-balls">
+				<div style="position: relative;">
+					<div class="pix vertical">
+						Games Played
+					</div>
+					<div id="balls">
+					</div>
+				</div>
+			</div>
+			<canvas id="pieChart"></canvas>
+			<div class="wrap-bars">
+				<div class="holder">
+					<div class="bar cf" id="barLoss" data-percent="{{stats.results.losses}}%"><span
+							class="label">Loss</span></div>
+					<div class="bar cf" id="barWin" data-percent="{{stats.results.wins}}%"><span
+							class="label light">Wins</span>
+					</div>
+					<div class="bar cf" id="barDraw" data-percent="{{stats.results.draws}}%"><span
+							class="label">Draws</span></div>
+				</div>
+			</div>
+		</div>
+		<img id="arcade" src="/static/img/gameMachineButtons.png">
+		<div id="gameBtns">
+			<img id="options" onclick="optionsDash()" src="/static/img/options.png">
+		</div>
+	</div>
+</body>
+
+</html>

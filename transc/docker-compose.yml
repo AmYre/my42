@@ -1,0 +1,43 @@
+services:
+  pong:
+    container_name: pong
+    build: .
+    ports:
+      - "8443:8443"
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+    depends_on:
+      - db
+    stdin_open: true
+    tty: true
+
+  db:
+    container_name: pong_db
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  blockchain:
+    container_name: blockchain
+    build:
+      context: .
+      dockerfile: blockchain/Dockerfile
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./blockchain:/app/blockchain
+      - ./pong/static:/app/pong/static
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+
+networks:
+  app-network:
+    driver: bridge

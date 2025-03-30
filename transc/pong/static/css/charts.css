@@ -1,0 +1,108 @@
+
+#radarChart {
+	position: absolute;
+	top: 165px;
+  left: 273px;
+	width: 400px!important;
+	height: 400px!important;
+}
+
+.wrap-balls{
+  position: absolute;
+  right: 123px;
+  top: 260px;
+}
+
+.vertical {
+  font-size: 15px;
+  position: absolute;
+  background-color: #ffffff;
+  transform: rotate(-90deg);
+  width: 200px;
+  right: 19px;
+  top: 84px;
+  padding: 5px;
+}
+
+#balls{
+    filter: drop-shadow(2px 2px 15px rgba(255, 255, 255, 0.37));
+}
+
+.wrap-text {
+	position: absolute;
+  font-size: 11px;
+	color : white;
+	width: 100%;
+  left: 270px;
+  bottom: 47px;
+}
+
+#pieChart {
+	position: absolute;
+  right: 85px;
+  bottom: 55px;
+  width: 180px !important;
+  height: 180px !important;
+	filter: drop-shadow(2px 2px 15px rgba(255, 255, 255, 0.37));
+}
+
+.wrap-bars {
+  position: absolute;
+  left: -123px;
+  bottom: 273px;
+  width: 60%;
+  transform: rotate(-90deg);
+  filter: drop-shadow(2px 2px 15px rgba(255, 255, 255, 0.37));
+}
+
+ul li {
+  line-height: 2;
+  font-weight: bold;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: .85em;
+  text-transform: uppercase;
+  clear: both;
+}
+ul li:before {
+  content: "\2023";
+  padding: 0 1em 0 0;
+}
+
+.bar {
+  background: #ffffff;
+  width: 0;
+  margin: .25em 0;
+  color: #000000;
+  position: relative;
+  transition: width 2s, background .2s;
+  -webkit-transform: translate3d(0, 0, 0);
+  clear: both;
+}
+.bar:nth-of-type(2n) {
+  background: #808080;
+}
+.bar .label {
+  font-size: .75em;
+  padding: 1em;
+  background: #808080;
+  width: 8em;
+  display: inline-block;
+  position: relative;
+  z-index: 2;
+  font-weight: bold;
+  font-family: "Press Start 2P", sans-serif;
+}
+
+.bar .label.light {
+  background: white;
+}
+
+.count {
+  position: absolute;
+  right: .25em;
+  top: .75em;
+  padding: .15em;
+  font-size: .75em;
+  font-weight: bold;
+  font-family: "Press Start 2P", sans-serif;
+}

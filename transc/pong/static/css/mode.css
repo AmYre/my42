@@ -1,0 +1,556 @@
+.mode-container {
+	display : flex;
+	justify-content : center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.avatar-container {
+	position: absolute;
+	top: 1vh;
+	left: 1vw;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: flex-start;
+	color: white;
+	z-index: 2;
+}
+
+.options {
+	color: white;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+}
+
+.slider-text {
+	color: black;
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	margin-top: 10px;
+}
+
+#image-format {
+	position: absolute;
+	display: flex;
+	gap: 4vmin;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	user-select: none;
+}
+
+.image-container {
+	position: relative;
+}
+
+.image {
+	width: 40vmin;
+	height: 56vmin;
+	object-fit: cover;
+	object-position: 100% center;
+	z-index: 1;
+}
+
+.scores-container {
+	position: absolute;
+	top: 1vh;
+	right: 1vw;
+	z-index: 2;
+}
+
+.scores-container img {
+	width: 130px;
+}
+
+.scores-container img:hover {
+	cursor: pointer;
+	animation: wiggle 0.7s infinite;
+}
+
+@keyframes wiggle {
+	0% {
+		transform: rotate(-5deg);
+	}
+	25% {
+		transform: rotate(5deg);
+	}
+	50% {
+		transform: rotate(-5deg);
+	}
+	75% {
+		transform: rotate(5deg);
+	}
+	100% {
+		transform: rotate(-5deg);
+	}
+}
+
+label {
+	color : black;
+}
+
+input {
+	color : white;
+}
+
+input[type="text"] {
+  background-color: #CCCCCC;
+  height: 20px;
+  font-family: 'Press Start 2P';
+  color: black;
+  box-shadow: 0px 0px 3px white;
+  width: 150px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.wrap-inputs-text{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wrap-label-input{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 10px;
+}
+
+input[type="text"]::placeholder {
+  color: rgb(136, 136, 136);
+  font-family: 'Press Start 2P';
+  font-size: 10px;
+}
+
+.mode-buttons {
+    position: absolute;
+    bottom: -50px; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dm-flip-card {
+    position: relative;
+    width: 40vmin;
+    height: 56vmin;
+    background: transparent;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    border: 14px dashed white;
+    border-radius: 15px;
+}
+
+.dm-front-card, .dm-back-card-one, .dm-back-card-two, .dm-back-card-three {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    transition: transform 1s;
+}
+
+.my-button {
+  position: relative;
+	display: flex;
+  justify-content: space-evenly;
+  height: 50px;
+  width: 120px;
+  text-decoration: none;
+	flex-direction: row;
+	align-items: center;
+	background: white;
+	font-family: "Righteous", serif;
+	font-optical-sizing: auto;
+  font-size: 16px;
+	font-weight: 400;
+	font-style: normal;
+	padding: 8px 10px;
+	box-shadow: 4px 4px 15px white;
+	transition-property: transform, box-shadow, outline-offset;
+	transition: 100ms ease-in;
+}
+
+.my-button img {
+  width: 27px;
+}
+
+.coin{
+  position: absolute;
+  transform: translateX(64px);
+}
+
+.my-button:hover {
+	box-shadow: 2px 2px 10px white;
+	cursor: pointer;
+}
+
+.my-button:focus-visible {
+	outline-offset: 12px;
+	outline: 2px dotted #2f2e2a;
+}
+
+.dm-front-card {
+    background-size: cover;
+    background-position: center center;
+}
+
+.dm-front-card:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+#hd-zoom{
+  display: none;
+  width: 28px;
+  z-index: 10;
+}
+
+#cab2{
+  display: none;
+  position : absolute;
+  width: 384px!important;
+  top: 16px;
+  left: -6px;
+}
+
+#cab3{
+  display: none;
+  position : absolute;
+  width: 384px!important;
+  top: 16px;
+  left: -6px;
+}
+
+.zoom1 {
+  position: absolute;
+  width: 28px !important;
+  bottom: 249px;
+  left: 504px;
+  z-index: 1;
+  animation: zooom 2s;
+}
+
+.zoom2 {
+  position: absolute;
+  width: 28px !important;
+  bottom: 249px;
+  left: 912px;
+  z-index: 1;
+  animation: zooom 2s;
+}
+
+.zoom3 {
+  position: absolute;
+  width: 28px !important;
+  bottom: 247px;
+  left: 1320px;
+  z-index: 1;
+  animation: zooom 2s;
+}
+
+.shrink {
+  animation: shrink 2s;
+}
+
+@keyframes zooom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(49);
+    bottom : 24.2%;
+    left :49.5%;
+  }
+}
+
+@keyframes shrink {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+}
+
+.dm-back-card-one {
+    background: #e5c103;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dm-back-card-two {
+    background: #B52E19;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.dm-back-card-three {
+    background: #314377;
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+form{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.dm-flip-card:hover .dm-front-card {
+    transform: rotateY(-180deg);
+}
+
+.dm-flip-card:hover .dm-back-card-one, .dm-flip-card:hover .dm-back-card-two, .dm-flip-card:hover .dm-back-card-three {
+    transform: rotateY(0deg);
+}
+
+.typed1{
+    font-size: 14px;
+    transform: translate(130px, 156px);
+    color: white;
+	width: 100%;
+}
+
+.typed2{
+    font-size: 14px;
+    transform:  translate(142px, 160px);
+    color: white;
+	width: 100%;
+}
+
+.typed3{
+    font-size: 14px;
+    transform: translate(126px, 161px);
+    color: white;
+	width: 100%;
+}
+
+.text1 {
+	text-transform: uppercase;
+	animation: blink 1s step-end infinite, type 2.5s steps(29) forwards;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.text2 {
+	text-transform: uppercase;
+    opacity: 0;
+	animation:
+        blink 1s step-end infinite 2s,
+        type 2.5s steps(29) forwards 0.5s,
+        fadeIn 0.1s linear forwards 0.5s;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.text3 {
+	text-transform: uppercase;
+    opacity: 0;
+    line-height: 17px;
+	animation:
+        blink 1s step-end infinite 4s,
+        type 2.5s steps(29) forwards 1s,
+        fadeIn 0.1s linear forwards 1s;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+
+@keyframes blink {
+	50% {
+		border-color: transparent;
+	}
+}
+
+@keyframes type {
+	0% {
+		width: 0;
+	}
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    margin: 9px;
+  }
+
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s cubic-bezier(0,1,0.5,1);
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s cubic-bezier(0,1,0.5,1);
+  }
+
+  input:checked + .slider {
+    background-color: black;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 4px white;
+  }
+
+  input:checked + .slider:before {
+    transform: translateX(17px);
+  }
+
+  .range-slider{
+    --range-width: 300px;
+    --track-clr: #ccc;
+    --thumb-w: 15px;
+    --thumb-h: 15px;
+    --thumb-radius: 0;
+    --thumb-space: 18px;
+    --thumb-clr: black;
+    --thumb-clr-active: black;
+    --thumb-scale-y-active: .75;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .range-slider > input[type="range"] {
+    width: var(--range-width);
+    height: var(--thumb-h);
+    -webkit-appearance :none;
+    -moz-appearance :none;
+    appearance: none;
+    background: white;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    box-shadow: 0 0 4px white;
+  }
+
+  .range-slider > input[type="range"]::-webkit-slider-thumb{
+    cursor: grab;
+    width: var(--thumb-w);
+    height: var(--thumb-h);
+    background: var(--thumb-clr);
+    background-color: var(--thumb-clr);
+    outline: none;
+    border: none;
+    border-radius: var(--thumb-radius);
+    box-shadow:
+      calc((var(--range-width) / 2 + var(--thumb-space)) * -1 ) 0 0 calc(var(--range-width) / 2) var(--thumb-clr),
+      calc((var(--range-width) / 2 + var(--thumb-space))) 0 0 calc(var(--range-width) / 2) var(--track-clr);
+    -webkit-appearance: none;
+    appearance: none;
+    transition-property: scale,box-shadow,background-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+    scale: 1 var(--thumb-scale-y,1);
+  }
+
+  .range-slider > input[type="range"]:focus-within,
+  .range-slider > input[type="range"]:hover{
+    --thumb-clr: var(--thumb-clr-active);
+    --thumb-scale-y: var(--thumb-scale-y-active);
+  }
+  .range-slider:has(input[type="range"]:focus-visible){
+    outline: 1px dashed white;
+    outline-offset: 4px;
+  }
+  
+  
+.logout-button {
+	display: flex;
+	flex-direction: column;
+	font-family: "Righteous", serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	background: white;
+	padding: 10px;
+	box-shadow: 4px 4px 15px white;
+	transition-property: transform, box-shadow, outline-offset;
+	transition: 100ms ease-in;
+	align-items: center;
+	z-index: 2;
+	margin-top: 10px;
+}
+
+.logout-button {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+	gap: 5px;
+	text-decoration: none;
+	color: black;
+}
+
+.logout-button img {
+	width: 50px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: black;
+}
+
+.logout-button:hover {
+	box-shadow: 2px 2px 10px white;
+	cursor: pointer;
+}
+
+.logout-button:focus-visible {
+	outline-offset: 12px;
+	outline: 2px dotted #2f2e2a;
+}

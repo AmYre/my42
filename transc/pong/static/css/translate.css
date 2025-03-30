@@ -1,0 +1,13 @@
+.selector{
+    position: absolute;
+    top: 61px;
+    right: 43px;
+    background-color: transparent;
+    color: white;
+    font-size: 28px;
+}
+
+select option {
+  background-color: black;
+  padding: 10px;;
+}
