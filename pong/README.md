@@ -1,30 +1,29 @@
-# ft_TRANSCENDENCE
+# WEBSERV
 
-## Prérequis
+A fullstack webapp game.
 
--   Docker
--   Docker Compose
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/pong.png" width="100%"/>
+</p>
 
+## How was it?
 
-## Start the app :
-```bash
-make
-```
+It had the chance to be part of the new formula, giving me the opportunity to tackle the project by choosing from a lot of modules.<br/>
+It goes from Cybersec to Accessibilty with everything in between. Being a team project that is great idea to offer so much flexibility !<br/><br/>
+But as often with 42 subjects, some choices feel so arbitrary sometimes. Like you are forced to do vanilla JS for the the front, wich is a great idea to learn bases.<br/>
+But for backend you can go only for Django or Ruby. What the heck ? I mean i am not guarding my chapel, but if the point is to learn JS, NodeJS or its frameworks felt like very appropriate... <br/>
+Anyway it was good opportunity to learn Django and write my first python lines of code 🤗. I loved my dev experience with Django, so handy. It has everything you need and more.<br/><br/>
+But like in other projects, the "arbitrary" choices of the subjects hit me again. The app HAS TO BE an SPA. Why ? You just left us choose for a nice backend that handles templating and routing so smoothly, why forcing me to inject the HTML client side then ? It is very frustrating<br/>
+I personally have a background in web development and had no problem with the concept of SPA and SSR. But boy I can tell you that made miserable the life of my mates and other studs on the same projects. <br/>
 
-## To have a look to the DB :
-```bash
-make admin
-```
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/score.png" width="50%"/>
+</p>
+<p align="center">
+  <img src="https://raw.githubusercontent.com/AmYre/my42/master/dash.png" width="50%"/>
+</p>
+<br/><br/>
 
-## To stop without clearing DB :
-```bash
-make stop
-```
-
-## To quit :
-```bash
-make fclean
-```
 
 ## What is expected from the app :
 - Single Page Application
